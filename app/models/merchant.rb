@@ -6,6 +6,8 @@ class Merchant < ActiveRecord::Base
   has_one :debit_method, :class_name => "PaymentMethod::DebitCard"
   
 
+  # gives the corresponding payment method
+  # @return [Object]
   def find_pay_method(method)
     case method
     when "Cash"
@@ -20,14 +22,14 @@ class Merchant < ActiveRecord::Base
   end
 
   # checks rate is inside minimum and maximum value 
+  # @return [Integer] rate
   def get_final_rate(default_rate)
     default_rate > max_rate_amt ? max_rate_amt : (default_rate < min_rate_amt ? min_rate_amt : default_rate)
   end
  
   # calclates the rate
-  # @return Hash
+  # @return [Hash]
   def find_rate(method, prod_val)
-    #{:method => method, :prod_val => prod_val}
     pay_method = find_pay_method(method)
     if pay_method
       default_rate = ((prod_val.to_i *  pay_method.rate / 100) + fixed_rate)
@@ -35,7 +37,6 @@ class Merchant < ActiveRecord::Base
     else
       return {:status => {"Error" => "Payment Method Not Found"}} 
     end 
-
   end
 
 end
