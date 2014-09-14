@@ -3,10 +3,14 @@
 Rails is a web-application framework that includes everything needed to create
 database-backed web applications according to the Model-View-Control pattern.
 
+This is a sample rails application which calculates rate from the inputs: merchant Id, payment method and Product Value.
+You can give a request with the following format and get the corresponding response.  
+
 Get Started
 
 Step 1:
 $ rake db:migrate -t
+
 $ rake db:seed -t
 
 Step 2:
