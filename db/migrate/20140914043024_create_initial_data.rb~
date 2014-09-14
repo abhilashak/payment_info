@@ -1,0 +1,10 @@
+class CreateInitialData < ActiveRecord::Migration
+  def up
+    
+  end
+
+  def down
+    drop_table :merchants
+    drop_table :payment_methods	
+  end
+end

@@ -1,0 +1,3 @@
+class PaymentMethod::DebitCard < PaymentMethod::Base
+  belongs_to :merchant
+end
